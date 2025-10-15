@@ -1,0 +1,13 @@
+{
+  "name": "express-sample",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node src/index.js",
+    "build": "echo \"Happy birthday Rox! I appreciate you a lot ❤️\""
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}

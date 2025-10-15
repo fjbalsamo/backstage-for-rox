@@ -1,0 +1,14 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: ${{ values.name | dump }}
+  title: ${{ values.name | dump }}
+  description: An example Express.js application created using the Backstage scaffolder.
+  links:
+    - url: https://expressjs.com/en/starter/hello-world.html
+      title: Sample App Documentation
+spec:
+  type: service
+  owner: group:my-team
+  system: my-system
+  lifecycle: experimental

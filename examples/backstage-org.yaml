@@ -1,0 +1,54 @@
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: my-team
+  description: A group describes an organizational entity, such as for example a team, a business unit, or a loose collection of people in an interest group.
+  links:
+    - url: https://backstage.io/docs/features/software-catalog/descriptor-format#kind-group
+      title: Documentation
+spec:
+  type: team
+  profile:
+    displayName: My Team
+    email: my-team@example.com
+  children: []
+---
+apiVersion: backstage.io/v1alpha1
+kind: Domain
+metadata:
+  name: my-domain
+  title: My Awesome Domain
+  description: A Domain groups a collection of systems that share terminology, domain models, business purpose, or documentation
+  links:
+    - url: https://backstage.io/docs/features/software-catalog/descriptor-format#kind-domain
+      title: Documentation
+spec:
+  owner: group:my-team
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: my-system
+  title: My System
+  description: A system is a collection of resources and components. The system may expose or consume one or several APIs. It is viewed as abstraction level that provides potential consumers insights into exposed features without needing a too detailed view into the details of all components.
+  links:
+    - url: https://backstage.io/docs/features/software-catalog/descriptor-format#kind-system
+      title: Documentation
+spec:
+  owner: group:my-team
+  domain: my-domain
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: guest
+  description: A user describes a person, such as an employee, a contractor, or similar.
+  links:
+    - url: https://backstage.io/docs/features/software-catalog/descriptor-format#kind-user
+      title: Documentation
+spec:
+  profile:
+    displayName: Guest User
+    email: guest@example.com
+  memberOf: [my-team]

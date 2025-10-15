@@ -1,0 +1,61 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: create-github-app
+  title: Create GitHub App
+  description: Create a new GitHub repository with a sample Express.js app.
+  tags:
+    - nodejs
+    - express
+    - docker
+spec:
+  owner: group:my-team
+  type: service
+  parameters:
+    - title: Project Details
+      description: Information used to generate the new repository.
+      required: [name, owner]
+      properties:
+        name:
+          type: string
+          title: Nombre del repositorio
+          description: El nombre del repositorio a crear en GitHub.
+          pattern: '^[a-z0-9._-]+$'
+          default: my-express-app
+        owner:
+          type: string
+          title: Repository Owner
+          description: The GitHub username or organization where the repository will be created.
+          default: my-github-username
+  steps:
+    - id: fetch
+      name: Clone template
+      action: fetch:template
+      input:
+        url: ./skeleton
+        targetPath: .
+        values:
+          name: ${{ parameters.name }}
+          description: ${{ parameters.description }}
+          owner: ${{ parameters.owner }}
+
+    - id: publish
+      name: Create GitHub repository
+      action: publish:github
+      input:
+        repoUrl: github.com?repo=${{ parameters.name }}&owner=${{ parameters.owner }}
+        description: ${{ parameters.description }}
+        defaultBranch: main
+        protectDefaultBranch: true
+
+    - id: register
+      name: Register in catalog
+      action: catalog:register
+      input:
+        repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
+        catalogInfoPath: '/catalog-info.yaml'
+
+  output:
+    links:
+      - title: Go to repository
+        url: ${{ steps.publish.output.remoteUrl }}

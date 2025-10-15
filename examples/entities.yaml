@@ -1,0 +1,31 @@
+# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-component
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: example-component
+  title: Example Component
+  description: A Component describes a software component. It is typically intimately linked to the source code that constitutes the component, and should be what a developer may regard a "unit of software", usually with a distinct deployable or linkable artifact.
+  links:
+    - url: https://backstage.io/docs/features/software-catalog/descriptor-format#kind-component
+      title: Documentation
+spec:
+  type: service
+  lifecycle: experimental
+  owner: my-team
+  system: my-system
+  dependsOn:
+    - resource:my-resource
+---
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: my-resource
+  title: My Resource
+  description: A resource describes the infrastructure a system needs to operate, like BigTable databases, Pub/Sub topics, S3 buckets or CDNs. Modelling them together with components and systems allows to visualize resource footprint, and create tooling around them.
+  links:
+    - url: https://backstage.io/docs/features/software-catalog/descriptor-format#kind-resource
+      title: Documentation
+spec:
+  type: cluster
+  owner: group:my-team
+  system: my-system
