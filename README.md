@@ -12,7 +12,7 @@ This is a Backstage application scaffolded for ROX demo project.
 1. **Environment Variables**: 
    - Copy `.env` file and configure the required variables:
      - `NODE_OPTIONS="--no-node-snapshot"` (already set)
-     - `GITHUB_TOKEN="******************"` (add your GitHub token for integrations)
+     - `GITHUB_TOKEN="ghp_**************"` (add your GitHub token for integrations)
 
 2. **Install Dependencies**:
    ```sh
@@ -24,6 +24,7 @@ This is a Backstage application scaffolded for ROX demo project.
 ### Development Mode
 Start the development server with hot reloading:
 ```sh
+export $(grep -v '^#' .env | xargs)
 yarn dev
 ```
 
