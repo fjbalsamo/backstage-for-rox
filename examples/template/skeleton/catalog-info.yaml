@@ -7,6 +7,8 @@ metadata:
   links:
     - url: https://expressjs.com/en/starter/hello-world.html
       title: Sample App Documentation
+  annotations:
+    github.com/project-slug: ${{ values.owner }}/${{ values.name }}
 spec:
   type: service
   owner: group:my-team
