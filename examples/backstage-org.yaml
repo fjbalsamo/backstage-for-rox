@@ -42,13 +42,13 @@ spec:
 apiVersion: backstage.io/v1alpha1
 kind: User
 metadata:
-  name: guest
+  name: fjbalsamo
   description: A user describes a person, such as an employee, a contractor, or similar.
   links:
     - url: https://backstage.io/docs/features/software-catalog/descriptor-format#kind-user
       title: Documentation
 spec:
   profile:
-    displayName: Guest User
-    email: guest@example.com
+    displayName: Franco Balsamo
+    email: fjbalsamo@email.com
   memberOf: [my-team]

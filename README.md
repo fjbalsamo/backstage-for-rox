@@ -9,10 +9,13 @@ This is a Backstage application scaffolded for ROX demo project.
 
 ## Environment Setup
 
-1. **Environment Variables**: 
+1. **Environment Variables**:
+
    - Copy `.env` file and configure the required variables:
      - `NODE_OPTIONS="--no-node-snapshot"` (already set)
      - `GITHUB_TOKEN="ghp_**************"` (add your GitHub token for integrations)
+     - `AUTH_GITHUB_CLIENT_ID="*********"` (SSO client ID)
+     - `AUTH_GITHUB_CLIENT_SECRET="*****"` (SSO client Secret)
 
 2. **Install Dependencies**:
    ```sh
@@ -22,7 +25,9 @@ This is a Backstage application scaffolded for ROX demo project.
 ## Running the Application
 
 ### Development Mode
+
 Start the development server with hot reloading:
+
 ```sh
 export $(grep -v '^#' .env | xargs)
 yarn dev
@@ -31,6 +36,7 @@ yarn dev
 This runs the backstage-cli repo start command with NODE_OPTIONS set to --no-node-snapshot.
 
 ### Alternative Start Command
+
 ```sh
 yarn dev
 ```
@@ -38,16 +44,19 @@ yarn dev
 ## Build Commands
 
 ### Build Backend Only
+
 ```sh
 yarn build:backend
 ```
 
 ### Build All Packages
+
 ```sh
 yarn build:all
 ```
 
 ### Build Docker Image
+
 ```sh
 yarn build-image
 ```
@@ -55,6 +64,7 @@ yarn build-image
 ## Development Commands
 
 ### Type Checking
+
 ```sh
 # Standard type check
 yarn tsc
@@ -64,6 +74,7 @@ yarn tsc:full
 ```
 
 ### Testing
+
 ```sh
 # Run tests
 yarn test
@@ -76,6 +87,7 @@ yarn test:e2e
 ```
 
 ### Code Quality
+
 ```sh
 # Auto-fix issues
 yarn fix
@@ -91,6 +103,7 @@ yarn prettier:check
 ```
 
 ### Utilities
+
 ```sh
 # Clean build artifacts
 yarn clean
@@ -102,6 +115,7 @@ yarn new
 ## Project Structure
 
 This is a monorepo with the following structure:
+
 - `packages/app/` - Frontend Backstage application
 - `packages/backend/` - Backend API server
 - `plugins/` - Custom Backstage plugins
