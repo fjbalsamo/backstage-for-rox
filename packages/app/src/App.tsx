@@ -38,7 +38,7 @@ import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/
 import { NotificationsPage } from '@backstage/plugin-notifications';
 import { SignalsDisplay } from '@backstage/plugin-signals';
 import { githubAuthApiRef } from '@backstage/core-plugin-api';
-import { darkTheme, lightTheme } from './themes';
+
 
 const app = createApp({
   apis,
@@ -75,20 +75,6 @@ const app = createApp({
       />
     ),
   },
-  themes: [
-    {
-      id: 'light',
-      title: 'Light',
-      variant: 'light',
-      theme: lightTheme
-    },
-    {
-      id: 'dark',
-      title: 'Dark',
-      variant: 'dark',
-      theme: darkTheme
-    }
-  ]
 });
 
 const routes = (
